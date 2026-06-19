@@ -1,0 +1,29 @@
+# Environment files — NEVER commit these
+.env
+.env.local
+*.env
+!.env.example
+!.env.local.example
+
+# Python
+__pycache__/
+*.pyc
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+.next/
+package-lock.json.bak
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
