@@ -1,7 +1,8 @@
 "use client"
 import { useState, useMemo } from "react"
 import { ArrowLeftRight, Play, AlertTriangle, CheckCircle2 } from "lucide-react"
-import { api, MoverFinding, MoverResult } from "@/lib/api"
+import { api } from "@/lib/api"
+import type { MoverFinding, MoverResult } from "@/types"
 import { PageHeader } from "@/components/PageHeader"
 import { Badge, riskVariant } from "@/components/Badge"
 
