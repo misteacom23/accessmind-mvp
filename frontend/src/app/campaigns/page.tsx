@@ -68,8 +68,8 @@ function ReviewDrawer({ campaign, onClose, onRefresh }: {
   const [actioning, setActioning]   = useState<number | null>(null)
 
   useEffect(() => {
-    campaignApi.items(campaign.id, filterStatus || undefined).then((data: CampaignReviewItem[]) => {
-      setItems(data || [])
+    campaignApi.items(campaign.id, filterStatus || undefined).then((data) => {
+      setItems((data as CampaignReviewItem[]) || [])
       setLoading(false)
     })
   }, [campaign.id, filterStatus])
@@ -78,7 +78,7 @@ function ReviewDrawer({ campaign, onClose, onRefresh }: {
     setActioning(item.id)
     await campaignApi.actionItem(campaign.id, item.id, { decision })
     const updated = await campaignApi.items(campaign.id, filterStatus || undefined)
-    setItems(updated || [])
+    setItems((updated as CampaignReviewItem[]) || [])
     setActioning(null)
     onRefresh()
   }
