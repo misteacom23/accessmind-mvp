@@ -454,7 +454,7 @@ export default function FindingsPage() {
       await api.createException({
         finding_id: selectedFinding.id, access_group_name: selectedFinding.finding_type,
         business_justification: exceptionJustification,
-        approved_by: user?.name ?? 'System', expiry_date: exceptionExpiry,
+        approved_by: user?.full_name ?? 'System', expiry_date: exceptionExpiry,
       })
       setRemediationResult(null); setActionView('success'); fetchData()
     } catch (err) { console.error(err) }
