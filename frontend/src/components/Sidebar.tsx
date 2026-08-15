@@ -68,7 +68,7 @@ export default function Sidebar() {
               {getRoleLabel(user.role)}
             </span>
           </div>
-          <p className="text-sm font-medium text-gray-200 truncate">{user.name}</p>
+          <p className="text-sm font-medium text-gray-200 truncate">{user.full_name}</p>
           <p className="text-xs text-gray-500 truncate">{user.email}</p>
           {user.last_login && (
             <p className="text-xs text-gray-600 mt-1">

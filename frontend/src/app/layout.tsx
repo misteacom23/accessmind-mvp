@@ -132,7 +132,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={inter.className}>
         <div className="flex min-h-screen bg-slate-50">
-          <Sidebar user={user} onUserChange={setUser} />
+          <Sidebar />
           <div className="flex-1 flex flex-col overflow-hidden">
             {/* ── Top bar */}
             <header className="h-12 border-b border-slate-800 bg-slate-900 flex items-center justify-end px-6 shrink-0">
