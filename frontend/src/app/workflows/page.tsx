@@ -96,8 +96,9 @@ function TimelineDrawer({ workflow, onClose }: { workflow: GovernanceWorkflow; o
   const [events, setEvents] = useState<WorkflowTimelineEvent[]>([])
   const [loading, setLoading] = useState(true)
   useEffect(() => {
-    workflowApi.timeline(workflow.id).then((data: { events: WorkflowTimelineEvent[] }) => {
-      setEvents(data.events || [])
+    workflowApi.timeline(workflow.id).then((data) => {
+      const timeline = data as { events: WorkflowTimelineEvent[] }
+      setEvents(timeline.events || [])
       setLoading(false)
     })
   }, [workflow.id])
@@ -426,21 +427,36 @@ export default function WorkflowsPage() {
     else if (filterStatus) params.status = filterStatus
     if (filterPriority) params.priority = filterPriority
     const data = await workflowApi.list(params as Parameters<typeof workflowApi.list>[0])
-    setWorkflows(data || [])
+    setWorkflows((data as GovernanceWorkflow[]) || [])
     setLoading(false)
   }, [filterStatus, filterPriority])
 
   useEffect(() => {
     loadWorkflows()
-    workflowApi.queueSummary().then(setSummary).catch(() => {})
+    workflowApi.queueSummary()
+      .then((data) => setSummary(data as {
+        active: number
+        escalated: number
+        overdue: number
+        critical_open: number
+      }))
+      .catch(() => {})
   }, [loadWorkflows])
 
   async function handleAutoTrigger() {
     setTriggering(true)
     await workflowApi.autoTrigger()
     await loadWorkflows()
+
     const s = await workflowApi.queueSummary()
-    setSummary(s)
+
+    setSummary(s as {
+      active: number
+      escalated: number
+      overdue: number
+      critical_open: number
+    })
+
     setTriggering(false)
   }
 
