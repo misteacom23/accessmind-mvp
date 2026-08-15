@@ -38,7 +38,7 @@ export default function ConnectorsPage() {
 
   useEffect(() => {
     api.connectors()
-      .then(setConnectors)
+      .then((data) => setConnectors(data as Connector[]))
       .catch(console.error)
       .finally(() => setLoading(false))
   }, [])
