@@ -378,7 +378,7 @@ export default function HygienePage() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-start justify-between gap-4">
-        <PageHeader title="Governance Hygiene" description="Governance debt intelligence across your IAM ecosystem" />
+        <PageHeader title="Governance Hygiene" subtitle="Governance debt intelligence across your IAM ecosystem" />
         <button onClick={handleScan} disabled={scanning || loading}
           className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-colors shrink-0">
           {scanning ? <Loader2 className="w-4 h-4 animate-spin" /> : <RefreshCw className="w-4 h-4" />}
