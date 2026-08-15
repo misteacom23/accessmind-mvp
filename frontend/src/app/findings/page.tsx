@@ -422,9 +422,13 @@ export default function FindingsPage() {
     setRemediationNotes('')
     setExceptionJustification('')
     setExceptionExpiry('')
-    try { setRemediationActions(await api.remediationActions(finding.id)) }
-    catch { setRemediationActions([]) }
-  }
+    try {
+      setRemediationActions(
+        (await api.remediationActions(finding.id)) as RemediationAction[]
+      )
+    } catch {
+      setRemediationActions([])
+    }
 
   const closeModal = () => { setSelectedFinding(null); setRemediationActions([]) }
 
