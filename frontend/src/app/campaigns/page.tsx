@@ -312,8 +312,8 @@ export default function CampaignsPage() {
       campaignApi.list(filterStatus ? { status: filterStatus } : undefined),
       campaignApi.overview(),
     ])
-    setCampaigns(c || [])
-    setOverview(o)
+    setCampaigns((c as GovernanceCampaign[]) || [])
+    setOverview(o as CampaignsOverview)
     setLoading(false)
   }, [filterStatus])
 
