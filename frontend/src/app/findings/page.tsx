@@ -366,7 +366,11 @@ export default function FindingsPage() {
   }, [riskFilter, statusFilter])
 
   useEffect(() => { fetchData() }, [fetchData])
-  useEffect(() => { api.connectors().then(setConnectors).catch(console.error) }, [])
+  useEffect(() => {
+    api.connectors()
+      .then((data) => setConnectors(data as Connector[]))
+      .catch(console.error)
+  }, [])
 
   const filtered = useMemo(() => {
     if (!search.trim()) return findings
