@@ -429,6 +429,7 @@ export default function FindingsPage() {
     } catch {
       setRemediationActions([])
     }
+  }
 
   const closeModal = () => { setSelectedFinding(null); setRemediationActions([]) }
 
@@ -441,7 +442,7 @@ export default function FindingsPage() {
         target_platform: selectedPlatform, connector_id: selectedConnectorId ?? undefined,
         notes: remediationNotes || undefined,
       })
-      setRemediationResult(result); setActionView('success'); fetchData()
+      setRemediationResult(result as RemediationAction); setActionView('success'); fetchData()
     } catch (err) { console.error(err) }
     finally { setModalLoading(false) }
   }
