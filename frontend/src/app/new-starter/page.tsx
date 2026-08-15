@@ -1,7 +1,8 @@
 "use client"
 import { useState } from "react"
 import { Lightbulb, Users, AlertCircle } from "lucide-react"
-import { api, RecommendationResult } from "@/lib/api"
+import { api } from "@/lib/api"
+import type { RecommendationResult } from "@/types"
 import { PageHeader } from "@/components/PageHeader"
 import { Badge } from "@/components/Badge"
 
