@@ -134,7 +134,7 @@ export default function LoginPage() {
             ))}
           </div>
           <p className="text-xs text-slate-400 mt-3 text-center">
-            All demo accounts use: <code className="bg-slate-100 px-1 py-0.5 rounded">Password123!</code>
+            All demo accounts, click to login
           </p>
         </div>
 
